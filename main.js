@@ -1,4 +1,6 @@
-const Data = [
+let loc = JSON.parse(localStorage.getItem('data'))
+
+const Data = (loc)?loc: [
 	{
 		id: 1,
 		username: 'abudiay',
@@ -82,6 +84,7 @@ const Data = [
 ]
 
 
+// localStorage.setItem('data', JSON.stringify(Data))
 
 
 
@@ -199,6 +202,7 @@ inputElement.addEventListener('keyup', event => {
 		})
 		renderMessages(messagesList,userData.messages)		
 		event.target.value = ''
+		localStorage.setItem('data', JSON.stringify(Data))
 		inputElement.focus()
 	}
 })
