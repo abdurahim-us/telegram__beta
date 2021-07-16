@@ -127,10 +127,10 @@ let hamburgerToggle = 1
 hamburgerButtonElement.addEventListener('click', event => {
 	if(hamburgerToggle == 1) {
 		asidebarElement.style.transform = 'scaleY(1)'
-			modalName.textContent = myNameLocal
-			modalPhoneNumber.textContent = myNumberLocal
-			modalBio.textContent = '*****'
-			modalUsername.textContent = '*****'
+		modalName.textContent = myNameLocal
+		modalPhoneNumber.textContent = myNumberLocal
+		modalBio.textContent = '*****'
+		modalUsername.textContent = '*****'
 		
 		hamburgerToggle = 0
 	}
@@ -156,19 +156,19 @@ asidebarSettings.addEventListener('click', e => {
 		})
 		modalData.classList.toggle('modal__data__back')
 	})
-		
-	})
+	
+})
 
-	modalUnderCover.addEventListener('click', ev => {
-		modalElement.style.display = 'none'
-		modalUnderCover.style.display = 'none'
-		changeNameDiv.style.display = 'none'
-	})
-	closeButton.addEventListener('click', e =>{
-		modalElement.style.display = 'none'
-		modalUnderCover.style.display = 'none'
-		changeNameDiv.style.display = 'none'
-	})
+modalUnderCover.addEventListener('click', ev => {
+	modalElement.style.display = 'none'
+	modalUnderCover.style.display = 'none'
+	changeNameDiv.style.display = 'none'
+})
+closeButton.addEventListener('click', e =>{
+	modalElement.style.display = 'none'
+	modalUnderCover.style.display = 'none'
+	changeNameDiv.style.display = 'none'
+})
 
 
 
@@ -248,7 +248,7 @@ function renderUsers(parentElement, data) {
 		
 		newLiElementInRender.addEventListener('click', event => {
 			inputElement.focus()
-
+			
 			profileImg.src = user.photo
 			profileName.textContent = user.name
 			chatCover.classList.remove('chat-cover')
@@ -279,7 +279,7 @@ function renderUsers(parentElement, data) {
 					})
 					modalData.classList.toggle('modal__data__back')
 				})
-
+				
 				modalElement.style.display = 'block'
 				modalUnderCover.addEventListener('click', ev => {
 					modalElement.style.display = 'none'
@@ -296,7 +296,20 @@ function renderUsers(parentElement, data) {
 			
 		})
 		
+		let searchUsersInput = document.querySelector('.search__users')
+		searchUsersInput.addEventListener('keyup', v => {
+			let value = searchUsersInput.value
+			for(let i = 0; i < Data.length; i++){
+				if(!(newLiElementInRender.textContent.toLowerCase().includes(value.toLowerCase()))){
+					newLiElementInRender.style.display = 'none'
+				}
+				else if(newLiElementInRender.textContent.toLowerCase().includes(value.toLowerCase())) {
+					newLiElementInRender.style.display = 'flex'
+				}
+			}
+		})
 		parentElement.appendChild(newLiElementInRender)
+	
 	}
 }
 
@@ -369,36 +382,11 @@ $(usersListElement).on('click','li', function() {
 
 
 
-// let searchUsersInput = document.querySelector('.search__users')
-
-// searchUsersInput.addEventListener('keyup',function(e){
-// 	for(let i = 0; i < Data.length; i++){
-// 		console.log(Data[i].messages[i])
-// 		if(!((Data[i].name).toLocaleLowerCase().includes(searchUsersInput.value))) {
-// 			Data[i].style.display = 'none'
-// 		}
-// 		else if(Data[i].messages[i].body.toLocaleLowerCase().includes(searchUsersInput.value)){
-// 			Data[i].style.display = 'flex'
-// 		}
-// 	}
-// })
-// searchUsersInput.addEventListener('click', ev => {
-// 	let userElement = document.querySelectorAll('.users__item')
-// 				userElement.forEach(e => {
-// 					e.remove()
-// 					searchUsersInput.addEventListener('keyup', keys => {
-
-// 						for(let item of Data){
-// 							if(item.name.includes(searchUsersInput.value)) {
-// 								e= item.name
-// 							}
-// 						}
-// 					})
-// 				})
-
-// })
 
 
 
 
-	
+
+
+
+
